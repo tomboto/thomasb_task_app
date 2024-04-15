@@ -1,8 +1,51 @@
 import 'package:flutter/material.dart';
 
 int multiplyAdvanced(int a, int b) {
-  // Lösung hier einfügen
-  throw UnimplementedError();
+  int sum = 0;
+  if (a == 0 || b == 0) {
+    return sum;
+  } else if (a > 0 && b > 0) {
+    if (a < b) {
+      for (int i = 0; i < a; i++) {
+        sum += b;
+      }
+    } else {
+      for (int i = 0; i < b; i++) {
+        sum += a;
+      }
+    }
+  } else if (a < 0 && b < 0) {
+    if (a > b) {
+      for (int i = 0; i > a; i--) {
+        sum -= b;
+      }
+    } else {
+      for (int i = 0; i > b; i--) {
+        sum -= a;
+      }
+    }
+  } else if (a < 0 && b > 0) {
+    if (-a < b) {
+      for (int i = 0; i > a; i--) {
+        sum -= b;
+      }
+    } else {
+      for (int i = 0; i < b; i++) {
+        sum += a;
+      }
+    }
+  } else if (a > 0 && b < 0) {
+    if (a < -b) {
+      for (int i = 0; i < a; i++) {
+        sum += b;
+      }
+    } else {
+      for (int i = 0; i > b; i--) {
+        sum -= a;
+      }
+    }
+  }
+  return sum;
 }
 
 class S3388 extends StatefulWidget {

@@ -2,7 +2,17 @@ import 'package:flutter/material.dart';
 
 int reverseNumber(int input) {
   // Lösung hier einfügen
-  throw UnimplementedError();
+  // input=1234
+  int reverse = 0;
+  while (input > 0) {
+    // letzte Ziffer isolieren: 1234%10 = 4 -> 123%10 = 3 -> 12%10 = 2 -> 1%10 = 1
+    int lastDigit = input % 10;
+    // letzte Ziffer anhängen: (0*10)+4 = 4 -> (4*10)+3 = 43 -> (43*10)+2 = 423 -> (423*10)+1 = 4321
+    reverse = (reverse * 10) + lastDigit;
+    // letzte Zahl entfernen: 1234/10 = 123 -> 123/10 = 12 -> 12/10 = 1 -> 1/10 = 0 -> Schleifenende
+    input = input ~/ 10;
+  }
+  return reverse;
 }
 
 class S3381 extends StatefulWidget {

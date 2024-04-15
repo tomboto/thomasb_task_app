@@ -1,8 +1,26 @@
+// ignore: unused_import
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 
 bool isAnagram(String word1, String word2) {
-  // Lösung hier einfügen
-  throw UnimplementedError();
+  String word1ToLowerCase = word1.toLowerCase();
+  String word2ToLowerCase = word2.toLowerCase();
+  List<String> word1ToChars = [];
+  List<String> word2ToChars = [];
+
+  if (word1 == "" && word2 == "") {
+    return true;
+  }
+
+  for (int i = 0; i < word1ToLowerCase.length; i++) {
+    word1ToChars.add(word1ToLowerCase[i]);
+  }
+  for (int i = 0; i < word2ToLowerCase.length; i++) {
+    word2ToChars.add(word2ToLowerCase[i]);
+  }
+  word1ToChars.sort();
+  word2ToChars.sort();
+  return word1ToChars.toString() == word2ToChars.toString();
 }
 
 class S3386 extends StatefulWidget {

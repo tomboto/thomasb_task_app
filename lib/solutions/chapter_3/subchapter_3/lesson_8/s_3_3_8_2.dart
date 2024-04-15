@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
 
 bool isPrime(int input) {
-  // Lösung hier einfügen
-  throw UnimplementedError();
+  // 1. Bedingung: Nur natürliche Zahlen {1, 2, 3, 4, 5, ...}!
+  // 2, Bedingung: {0, 1} sind keine Primzahlen -> int mögliche Primzzahl > 1!
+  // 2. Bedingung: nur durch 1 und durch sich selbst ohne Rest (also Modulo = 0) teilbar!
+  if (input <= 1) {
+    return false; // Ganze Zahlen kleiner gleich 1 sind keine Primzahlen
+  }
+  for (int i = 2; i * i <= input; i++) {
+    if (input % i == 0) {
+      return false; // input ist keine Primzahl, wenn es einen Teiler gibt, der kleiner oder gleich seiner Quadratwurzel ist
+    }
+  }
+  return true; // Alle ganzen Zahlen, die übrig bleiben, sind Primzahlen
 }
 
 class S3382 extends StatefulWidget {

@@ -6,8 +6,27 @@ import 'package:flutter/material.dart';
 /// This functions tries to hack a 4 digit PIN.
 /// It returns the PIN as a string.
 String hackPin() {
-  // Lösung hier einfügen
-  throw UnimplementedError();
+  List<String> digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
+  String pinTrial = "";
+
+  // Durchlaufe alle möglichen Kombinationen von 4-stelligen PINs
+  for (String firstDigit in digits) {
+    for (String secondDigit in digits) {
+      for (String thirdDigit in digits) {
+        for (String fourthDigit in digits) {
+          pinTrial = firstDigit + secondDigit + thirdDigit + fourthDigit;
+          // PIN auf ihre Korrektheit überprüfen
+          if (_isPinCorrect(pinTrial)) {
+            return pinTrial;
+          }
+        }
+      }
+    }
+  }
+
+  // Falls keine korrekte PIN gefunden wurde
+  return pinTrial;
 }
 
 // ignore: unused_element

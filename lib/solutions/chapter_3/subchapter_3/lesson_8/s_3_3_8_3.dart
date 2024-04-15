@@ -1,8 +1,21 @@
 import 'package:flutter/material.dart';
 
 FormattedTime formatSeconds(int seconds) {
-  // Lösung hier einfügen
-  throw UnimplementedError();
+  int hours = 0;
+  int minutes = 0;
+  if (seconds >= 3600) {
+    hours = seconds ~/ 3600; // Sekunden in Stunden umwandeln
+    minutes = (seconds % 3600) ~/ 60; // übrige Sekunden in Minuten umwandeln
+    seconds = (seconds % 3600) % 60; // übrige Sekunden (Modulo) berechnen
+  } else if (seconds >= 60) {
+    // Bei weniger als 3600 Sekunden sind Stunden immer 0
+    minutes = (seconds % 3600) ~/ 60;
+    seconds = (seconds % 3600) % 60;
+  } else {
+    // Bei weniger als 60 Sekunden sind Stunden und Minuten immer 0
+    seconds = seconds;
+  }
+  return FormattedTime(hours: hours, minutes: minutes, seconds: seconds);
 }
 
 class FormattedTime {
